@@ -8,15 +8,19 @@ class ColorDescriptor:
         self.bins = bins
 
     def describe(self, image):
+        # konversi gambar dari RGB ke HSV
         image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         features = []
 
+        # Cari titik tengah gambar
         (h, w) = image.shape[:2]
         (cX, cY) = (int(w * 0.5), int(h * 0.5))
 
+        # Bagi gambar jadi 4 bagian, atas kiri, kanan, bawah kanan, kiri
         segments = [(0, cX, 0, cY), (cX, w, 0, cY),
                     (cX, w, cY, h), (0, cX, cY, h)]
 
+        # Buat ellips pada center image
         (axesX, axesY) = (int(w * 0.75) // 2, int(h * 0.75) // 2)
         ellipMask = np.zeros(image.shape[:2], dtype="uint8")
         cv2.ellipse(ellipMask, (cX, cY), (axesX, axesY), 0, 0, 360, 255, -1)
