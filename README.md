@@ -1,6 +1,6 @@
 # content-based-image-retrieval
 
-This is just for completing collage project building image retrieval based on content. In this case we choose color extraction.
+This is just for completing college project building image retrieval based on content. In this case we choose color extraction.
 This program is build using **python**
 
 Let's get started
